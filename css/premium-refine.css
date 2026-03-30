@@ -2870,9 +2870,9 @@ body {
   }
 
   .brand-sheet img {
-    max-height: 300px !important;
-    transform: scale(1.02) !important;
-    transform-origin: center 10% !important;
+    max-height: 390px !important;
+    transform: scale(1.18) !important;
+    transform-origin: center 12% !important;
   }
 
   .brand-sheet figcaption {
