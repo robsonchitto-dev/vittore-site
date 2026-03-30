@@ -1,10 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   if (!hero) return;
-  const heroTrustStrip =
-    (hero.nextElementSibling && hero.nextElementSibling.classList.contains("trust-strip"))
-      ? hero.nextElementSibling
-      : document.querySelector("main > .trust-strip");
 
   const pathname = window.location.pathname.toLowerCase();
   const htmlLang = (document.documentElement.lang || "").toLowerCase();
@@ -105,21 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (mediaContainer) {
     mediaContainer.classList.add("hero-clean-muted");
-  }
-
-  if (heroTrustStrip) {
-    const mobileHeroFold = window.matchMedia("(max-width: 640px)");
-    const syncHeroTrustStrip = () => {
-      heroTrustStrip.hidden = mobileHeroFold.matches;
-    };
-
-    syncHeroTrustStrip();
-
-    if (typeof mobileHeroFold.addEventListener === "function") {
-      mobileHeroFold.addEventListener("change", syncHeroTrustStrip);
-    } else if (typeof mobileHeroFold.addListener === "function") {
-      mobileHeroFold.addListener(syncHeroTrustStrip);
-    }
   }
 
   if (hero.querySelector(".hero-video-stage")) return;

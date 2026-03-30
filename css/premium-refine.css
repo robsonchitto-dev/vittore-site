@@ -2839,7 +2839,7 @@ body {
   .hero {
     min-height: auto;
     padding-top: 42px;
-    padding-bottom: 46px;
+    padding-bottom: 28px;
   }
 
   .hero-copy,
@@ -2869,7 +2869,7 @@ body {
   }
 
   .trust-strip {
-    margin-top: 56px;
+    margin-top: 168px;
   }
 
   .trust-shell {
