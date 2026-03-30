@@ -2839,7 +2839,7 @@ body {
   .hero {
     min-height: auto;
     padding-top: 42px;
-    padding-bottom: 56px;
+    padding-bottom: 82px;
   }
 
   .hero-copy,
@@ -2848,7 +2848,7 @@ body {
   }
 
   .hero--clean .hero-copy {
-    padding-bottom: 22px;
+    padding-bottom: 30px;
   }
 
   .hero h1 {
@@ -2865,10 +2865,11 @@ body {
 
   .hero-actions {
     gap: 10px;
+    margin-bottom: 0;
   }
 
   .trust-strip {
-    margin-top: -10px;
+    margin-top: 24px;
   }
 
   .trust-shell {
@@ -2885,13 +2886,7 @@ body {
   }
 
   .trust-tags {
-    display: flex;
-    gap: 8px;
-  }
-
-  .trust-tags span {
-    padding: 8px 10px;
-    font-size: 0.78rem;
+    display: none;
   }
 
   .section {
