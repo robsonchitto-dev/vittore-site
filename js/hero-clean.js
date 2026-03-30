@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   if (!hero) return;
+  const heroTrustStrip =
+    (hero.nextElementSibling && hero.nextElementSibling.classList.contains("trust-strip"))
+      ? hero.nextElementSibling
+      : document.querySelector("main > .trust-strip");
 
   const pathname = window.location.pathname.toLowerCase();
   const htmlLang = (document.documentElement.lang || "").toLowerCase();
@@ -101,6 +105,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (mediaContainer) {
     mediaContainer.classList.add("hero-clean-muted");
+  }
+
+  if (primaryAction && heroTrustStrip) {
+    const mobileFold = window.matchMedia("(max-width: 640px)");
+    let foldFrame = null;
+
+    const syncMobileHeroFold = () => {
+      foldFrame = null;
+      hero.style.removeProperty("--hero-mobile-extra-bottom");
+      heroTrustStrip.style.removeProperty("--hero-mobile-flow-gap");
+
+      if (!mobileFold.matches) return;
+
+      const viewportHeight = Math.round(
+        window.visualViewport?.height ||
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        0
+      );
+
+      if (!viewportHeight) return;
+
+      const buttonRect = primaryAction.getBoundingClientRect();
+      const trustRect = heroTrustStrip.getBoundingClientRect();
+      const targetButtonBottom = viewportHeight - 18;
+      const targetTrustTop = viewportHeight + 28;
+      const extraBottom = Math.max(0, Math.ceil(targetButtonBottom - buttonRect.bottom));
+      const extraTrustGap = Math.max(0, Math.ceil(targetTrustTop - trustRect.top));
+
+      if (extraBottom > 0) {
+        hero.style.setProperty("--hero-mobile-extra-bottom", `${extraBottom}px`);
+      }
+
+      if (extraTrustGap > 0) {
+        heroTrustStrip.style.setProperty("--hero-mobile-flow-gap", `${extraTrustGap}px`);
+      }
+    };
+
+    const scheduleMobileHeroFoldSync = () => {
+      if (foldFrame) window.cancelAnimationFrame(foldFrame);
+      foldFrame = window.requestAnimationFrame(syncMobileHeroFold);
+    };
+
+    scheduleMobileHeroFoldSync();
+    window.addEventListener("load", scheduleMobileHeroFoldSync, { once: true });
+
+    if (typeof mobileFold.addEventListener === "function") {
+      mobileFold.addEventListener("change", scheduleMobileHeroFoldSync);
+    } else if (typeof mobileFold.addListener === "function") {
+      mobileFold.addListener(scheduleMobileHeroFoldSync);
+    }
+
+    window.addEventListener("resize", scheduleMobileHeroFoldSync, { passive: true });
+    window.addEventListener("orientationchange", scheduleMobileHeroFoldSync, { passive: true });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", scheduleMobileHeroFoldSync, { passive: true });
+      window.visualViewport.addEventListener("scroll", scheduleMobileHeroFoldSync, { passive: true });
+    }
   }
 
   if (hero.querySelector(".hero-video-stage")) return;

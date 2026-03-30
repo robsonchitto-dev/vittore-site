@@ -2839,19 +2839,19 @@ body {
   .hero {
     min-height: 100svh;
     padding-top: 42px;
-    padding-bottom: 20px;
+    padding-bottom: calc(20px + var(--hero-mobile-extra-bottom, 0px));
   }
 
   .hero-grid,
   .hero--clean .hero-grid {
-    min-height: calc(100svh - 130px);
+    min-height: calc(100svh - 130px + var(--hero-mobile-extra-bottom, 0px));
     align-items: stretch;
   }
 
   .hero-copy,
   .hero--clean .hero-copy {
     max-width: none;
-    min-height: calc(100svh - 146px);
+    min-height: calc(100svh - 146px + var(--hero-mobile-extra-bottom, 0px));
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2881,7 +2881,7 @@ body {
   }
 
   .trust-strip {
-    margin-top: 118px;
+    margin-top: calc(28px + var(--hero-mobile-flow-gap, 0px));
   }
 
   .trust-shell {
