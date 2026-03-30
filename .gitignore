@@ -1,0 +1,6 @@
+Thumbs.db
+.DS_Store
+
+presentations/vittore-site-deck/pptxgenjs_helpers/node_modules/
+presentations/vittore-site-deck/*.pptx
+assets/images/velhos/

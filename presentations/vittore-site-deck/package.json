@@ -1,0 +1,16 @@
+{
+  "name": "vittore-site-deck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apresentacao PPTX baseada no site da Vittore PDR Group",
+  "scripts": {
+    "build": "node build_vittore_deck.js",
+    "build:teccom": "node build_vittore_deck_tecnico_comercial.js",
+    "build:cliente": "node build_vittore_deck_proposta_cliente.js",
+    "build:cliente:it": "node build_vittore_deck_proposta_cliente_it.js",
+    "build:folder": "node build_vittore_folder_triptico.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}
