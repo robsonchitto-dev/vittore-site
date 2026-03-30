@@ -966,7 +966,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const contactColumnLinks = document.querySelectorAll('.footer-column-contact .footer-links a');
       if (contactColumnLinks[0]) contactColumnLinks[0].textContent = 'WhatsApp commerciale';
-      if (contactColumnLinks[1]) contactColumnLinks[1].textContent = 'contato@vittorepdr.com';
+          if (contactColumnLinks[1]) contactColumnLinks[1].textContent = 'contact@vittorepdr.com';
       if (contactColumnLinks[2]) contactColumnLinks[2].textContent = 'Parla con un esperto';
       if (contactColumnLinks[3]) contactColumnLinks[3].textContent = 'Accedi all’intranet';
       const institutionalLinks = document.querySelectorAll('.footer-columns .footer-column:nth-child(3) .footer-links a');
@@ -1395,7 +1395,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const contactColumnLinks = document.querySelectorAll('.footer-column-contact .footer-links a');
       if (contactColumnLinks[0]) contactColumnLinks[0].textContent = 'Commercial WhatsApp';
-      if (contactColumnLinks[1]) contactColumnLinks[1].textContent = 'contato@vittorepdr.com';
+          if (contactColumnLinks[1]) contactColumnLinks[1].textContent = 'contact@vittorepdr.com';
       if (contactColumnLinks[2]) contactColumnLinks[2].textContent = 'Talk to a specialist';
       if (contactColumnLinks[3]) contactColumnLinks[3].textContent = 'Access intranet';
       const institutionalLinks = document.querySelectorAll('.footer-columns .footer-column:nth-child(3) .footer-links a');
