@@ -2839,7 +2839,7 @@ body {
   .hero {
     min-height: auto;
     padding-top: 42px;
-    padding-bottom: 104px;
+    padding-bottom: 46px;
   }
 
   .hero-copy,
@@ -2848,7 +2848,7 @@ body {
   }
 
   .hero--clean .hero-copy {
-    padding-bottom: 38px;
+    padding-bottom: 18px;
   }
 
   .hero h1 {
