@@ -2837,18 +2837,28 @@ body {
   }
 
   .hero {
-    min-height: auto;
+    min-height: calc(100svh - 92px);
     padding-top: 42px;
-    padding-bottom: 28px;
+    padding-bottom: 22px;
+  }
+
+  .hero-grid,
+  .hero--clean .hero-grid {
+    min-height: calc(100svh - 172px);
+    align-items: end;
   }
 
   .hero-copy,
   .hero--clean .hero-copy {
     max-width: none;
+    min-height: calc(100svh - 188px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .hero--clean .hero-copy {
-    padding-bottom: 18px;
+    padding-bottom: 0;
   }
 
   .hero h1 {
@@ -2865,11 +2875,13 @@ body {
 
   .hero-actions {
     gap: 10px;
+    margin-top: auto;
+    padding-top: 18px;
     margin-bottom: 0;
   }
 
   .trust-strip {
-    margin-top: 168px;
+    margin-top: 28px;
   }
 
   .trust-shell {
@@ -2886,7 +2898,13 @@ body {
   }
 
   .trust-tags {
-    display: none !important;
+    display: flex !important;
+    gap: 8px;
+  }
+
+  .trust-tags span {
+    padding: 8px 10px;
+    font-size: 0.78rem;
   }
 
   .section {
