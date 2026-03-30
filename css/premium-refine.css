@@ -140,6 +140,14 @@ select {
   line-height: 1;
 }
 
+.mobile-utility-links {
+  display: none;
+}
+
+.mobile-utility-item {
+  display: none;
+}
+
 .site-nav {
   gap: 0.45rem;
   min-width: 0;
@@ -2642,6 +2650,41 @@ body {
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
   }
 
+  .mobile-utility-links {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(7, 11, 20, 0.92);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+  }
+
+  .mobile-utility-item {
+    display: grid;
+    gap: 2px;
+    padding: 11px 12px;
+    border-radius: 14px;
+    color: rgba(244, 247, 252, 0.94);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mobile-utility-item strong {
+    display: block;
+    font-size: 0.94rem;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .mobile-utility-item small {
+    display: block;
+    color: rgba(226, 231, 239, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.38;
+  }
+
   .site-nav li {
     width: 100%;
   }
@@ -2666,6 +2709,10 @@ body {
   .header-social {
     justify-content: center;
     gap: 6px;
+  }
+
+  .utility-menu {
+    display: none;
   }
 
   .hero {
@@ -2885,7 +2932,4 @@ body {
     min-height: 220px;
   }
 
-  .utility-menu {
-    display: none;
-  }
 }

@@ -12,6 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (navToggle && siteHeader && siteNav) {
+    siteNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (mobileQuery.matches) {
+          closeMobileNav();
+        }
+      });
+    });
+
     navToggle.addEventListener("click", () => {
       const isOpen = siteHeader.classList.toggle("is-nav-open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
