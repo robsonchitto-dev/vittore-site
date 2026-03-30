@@ -2839,12 +2839,16 @@ body {
   .hero {
     min-height: auto;
     padding-top: 42px;
-    padding-bottom: 34px;
+    padding-bottom: 44px;
   }
 
   .hero-copy,
   .hero--clean .hero-copy {
     max-width: none;
+  }
+
+  .hero--clean .hero-copy {
+    padding-bottom: 18px;
   }
 
   .hero h1 {
@@ -2864,27 +2868,24 @@ body {
   }
 
   .trust-strip {
-    margin-top: -78px;
+    margin-top: -42px;
   }
 
   .trust-shell {
+    align-items: flex-start;
     gap: 10px;
-    padding: 12px 14px;
+    padding: 14px 16px;
     border-radius: 20px;
   }
 
   .trust-shell p {
+    max-width: 24ch;
     font-size: 0.96rem;
     line-height: 1.34;
   }
 
   .trust-tags {
-    gap: 8px;
-  }
-
-  .trust-tags span {
-    padding: 8px 10px;
-    font-size: 0.78rem;
+    display: none;
   }
 
   .section {
