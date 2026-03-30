@@ -2839,19 +2839,19 @@ body {
   .hero {
     min-height: 100svh;
     padding-top: 42px;
-    padding-bottom: calc(20px + var(--hero-mobile-extra-bottom, 0px));
+    padding-bottom: 20px;
   }
 
   .hero-grid,
   .hero--clean .hero-grid {
-    min-height: calc(100svh - 130px + var(--hero-mobile-extra-bottom, 0px));
+    min-height: calc(100svh - 130px);
     align-items: stretch;
   }
 
   .hero-copy,
   .hero--clean .hero-copy {
     max-width: none;
-    min-height: calc(100svh - 146px + var(--hero-mobile-extra-bottom, 0px));
+    min-height: calc(100svh - 146px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2881,7 +2881,8 @@ body {
   }
 
   .trust-strip {
-    margin-top: calc(28px + var(--hero-mobile-flow-gap, 0px));
+    margin-top: 28px;
+    transition: opacity 220ms ease, transform 220ms ease, max-height 220ms ease, margin-top 220ms ease;
   }
 
   .trust-shell {
@@ -2905,6 +2906,21 @@ body {
   .trust-tags span {
     padding: 8px 10px;
     font-size: 0.78rem;
+  }
+
+  html.mobile-hero-fold-gated:not(.mobile-hero-fold-revealed) .trust-strip {
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(-18px);
+  }
+
+  html.mobile-hero-fold-revealed .trust-strip {
+    max-height: 420px;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .section {
