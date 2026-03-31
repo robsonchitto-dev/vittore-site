@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const links = [
-    { href: 'brasil.html', flag: 'fi-br', label: 'BR', active: currentLang === 'pt' },
     { href: './', flag: 'fi-it', label: 'IT', active: currentLang === 'it' },
     { href: 'portugal.html', flag: 'fi-pt', label: 'PT', active: currentLang === 'pt-pt' },
     { href: 'english.html', flag: 'fi-gb', label: 'EN', active: currentLang === 'en' }
