@@ -2837,21 +2837,21 @@ body {
   }
 
   .hero {
-    min-height: 100svh;
+    min-height: calc(100svh + 56px);
     padding-top: 42px;
-    padding-bottom: 20px;
+    padding-bottom: 28px;
   }
 
   .hero-grid,
   .hero--clean .hero-grid {
-    min-height: calc(100svh - 130px);
+    min-height: calc(100svh - 74px);
     align-items: stretch;
   }
 
   .hero-copy,
   .hero--clean .hero-copy {
     max-width: none;
-    min-height: calc(100svh - 146px);
+    min-height: calc(100svh - 90px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2876,7 +2876,7 @@ body {
   .hero-actions {
     gap: 10px;
     margin-top: auto;
-    padding-top: 30px;
+    padding-top: 42px;
     margin-bottom: 0;
   }
 

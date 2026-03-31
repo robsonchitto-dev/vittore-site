@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (heroTrustStrip) {
     const mobileFold = window.matchMedia("(max-width: 640px)");
+    const foldRevealOffset = 120;
     let revealedByScroll = false;
 
     const revealTrustStrip = () => {
@@ -126,14 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       root.classList.add("mobile-hero-fold-gated");
 
-      if (window.scrollY > 24) {
+      if (window.scrollY > foldRevealOffset) {
         revealTrustStrip();
       }
     };
 
     const handleMobileScroll = () => {
       if (!mobileFold.matches || revealedByScroll) return;
-      if (window.scrollY > 24) {
+      if (window.scrollY > foldRevealOffset) {
         revealTrustStrip();
       }
     };
