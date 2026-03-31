@@ -79,7 +79,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const company = pick("empresa", "company", "azienda");
     const vehicleCount = pick("quantidade_veiculos", "vehicleCount", "numeroVeicoli");
     const cityProvince = pick("localidade", "cityProvince", "cittaProvincia");
-    const message = pick("mensagem", "message");
+    const rawMessage = pick("mensagem", "message");
+    const contextLines = [
+      company ? `Empresa: ${company}` : "",
+      vehicleCount ? `Volume: ${vehicleCount}` : "",
+      cityProvince ? `Localidade: ${cityProvince}` : "",
+      whatsapp ? `WhatsApp: ${whatsapp}` : "",
+      email ? `Email: ${email}` : ""
+    ].filter(Boolean);
+    const message = [
+      contextLines.length ? contextLines.join(" | ") : "",
+      rawMessage
+    ].filter(Boolean).join("\n");
 
     const payload = {
       formName: trimValue(form.dataset.formName) || defaultFormName,
