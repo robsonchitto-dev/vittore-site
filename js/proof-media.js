@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
   article.innerHTML = `
     <figure class="proof-media-figure">
       <img
-        src="assets/images/antes-depois-real.jpg"
-        alt="Comparacao visual de antes e depois em reparacao PDR"
+        src="assets/images/carro-reparado.jpeg"
+        alt="Aplicacao da tecnica PDR durante a reparacao"
         loading="lazy"
         decoding="async"
       >
       <figcaption class="proof-media-caption">
-        <span class="proof-media-label">Antes e depois</span>
-        <strong>Resultado visivel com mais tranquilidade para quem precisa entregar bem.</strong>
-        <p>Quando o dano permite PDR, o parceiro ganha previsibilidade, menos desgaste operacional e mais confianca na entrega final.</p>
+        <span class="proof-media-label">Aplicacao PDR</span>
+        <strong>Execucao tecnica com foco em acabamento e consistencia de entrega.</strong>
+        <p>As imagens atuais do site passam a refletir apenas os arquivos existentes na pasta de assets, sem depender de midias antigas.</p>
       </figcaption>
     </figure>
   `;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const image = article.querySelector("img");
   if (image) {
     image.addEventListener("error", () => {
-      image.src = "assets/images/antes-depois-real.svg";
+      image.src = "assets/images/carro-danificado.jpeg";
     }, { once: true });
   }
 });

@@ -130,7 +130,7 @@
     }
   };
 
-  const comparisonImageSrc = "assets/images/antes-depois.jpeg";
+  const comparisonImageSrc = "assets/images/carro-reparado.jpeg";
   const brandsImageSrc = "assets/images/logo-marcas.png";
 
   const brandsCopy = {

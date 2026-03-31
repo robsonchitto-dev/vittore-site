@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const authoritySection = document.querySelector("#autoridade .brand-cloud");
   if (authoritySection) {
     mountWhenVisible(authoritySection, () => {
-      const src = "assets/images/logo-marcas.jpg";
+      const src = "assets/images/logo-marcas.png";
       const authorityShell = document.querySelector("#autoridade .authority-shell");
       if (authorityShell) {
         authorityShell.classList.add("authority-shell--with-sheet");
