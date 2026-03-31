@@ -5,14 +5,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const langParam = (params.get('lang') || '').toLowerCase();
   const path = window.location.pathname.toLowerCase();
+  const pageLang = (document.documentElement.lang || '').toLowerCase();
 
-  let currentLang = 'pt';
-  if (path.endsWith('/italiano.html') || path.endsWith('italiano.html') || langParam === 'it') currentLang = 'it';
-  if (path.endsWith('/english.html') || path.endsWith('english.html') || langParam === 'en') currentLang = 'en';
-  if (path.endsWith('/portugal.html') || path.endsWith('portugal.html') || langParam === 'pt-pt' || langParam === 'ptpt') currentLang = 'pt-pt';
+  let currentLang = 'it';
+  if (path.endsWith('/brasil.html') || path.endsWith('brasil.html')) {
+    currentLang = 'pt';
+  } else if (path.endsWith('/english.html') || path.endsWith('english.html')) {
+    currentLang = 'en';
+  } else if (path.endsWith('/portugal.html') || path.endsWith('portugal.html')) {
+    currentLang = 'pt-pt';
+  } else if (path === '/' || path.endsWith('/index.html') || path.endsWith('index.html')) {
+    currentLang = 'it';
+  } else if (pageLang.startsWith('en') || langParam === 'en') {
+    currentLang = 'en';
+  } else if (pageLang === 'pt-pt' || langParam === 'pt-pt' || langParam === 'ptpt') {
+    currentLang = 'pt-pt';
+  } else if (pageLang === 'pt-br' || pageLang === 'pt' || langParam === 'pt' || langParam === 'pt-br') {
+    currentLang = 'pt';
+  } else if (pageLang === 'it' || langParam === 'it') {
+    currentLang = 'it';
+  }
 
   const links = [
-    { href: 'italiano.html', flag: 'fi-it', label: 'IT', active: currentLang === 'it' },
+    { href: 'brasil.html', flag: 'fi-br', label: 'BR', active: currentLang === 'pt' },
+    { href: './', flag: 'fi-it', label: 'IT', active: currentLang === 'it' },
     { href: 'portugal.html', flag: 'fi-pt', label: 'PT', active: currentLang === 'pt-pt' },
     { href: 'english.html', flag: 'fi-gb', label: 'EN', active: currentLang === 'en' }
   ];

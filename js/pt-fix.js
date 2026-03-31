@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageLang = (document.documentElement.lang || '').toLowerCase();
   const path = window.location.pathname.toLowerCase();
   const isBrazil = (
-    (!lang && !pageLang && !path.endsWith('italiano.html') && !path.endsWith('english.html')) ||
-    lang === 'pt' ||
-    lang === 'pt-br' ||
+    path.endsWith('brasil.html') ||
     pageLang === 'pt-br' ||
     pageLang === 'pt'
   );

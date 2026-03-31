@@ -3,8 +3,9 @@
     const path = (location.pathname || "").toLowerCase();
     const docLang = (document.documentElement.lang || "").toLowerCase();
     const queryLang = new URLSearchParams(location.search).get("lang");
-    const explicit = (queryLang || docLang || "").toLowerCase();
+    const explicit = (docLang || queryLang || "").toLowerCase();
 
+    if (path.endsWith("brasil.html") || explicit === "pt-br" || explicit === "pt") return "pt";
     if (path.endsWith("italiano.html") || explicit === "it") return "it";
     if (path.endsWith("english.html") || explicit === "en") return "en";
     if (path.endsWith("portugal.html") || explicit === "pt-pt") return "pt-pt";
