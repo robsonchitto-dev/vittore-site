@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (element) element.textContent = text;
   };
 
-  setText('.hero .eyebrow', 'REFORÇO TÉCNICO PDR PARA OPERAÇÕES AUTOMOTIVAS');
+  setText('.hero .eyebrow', 'EQUIPE ESPECIALIZADA EM PDR');
   const heroTitle = document.querySelector('.hero h1, .hero-copy h1');
-  if (heroTitle) heroTitle.textContent = 'Reduza fila e proteja o prazo da sua operação com especialistas em PDR.';
+  if (heroTitle) heroTitle.textContent = 'Soluções concretas, mesmo onde os outros não chegam.';
 
   const heroLeads = document.querySelectorAll('.hero .lead, .hero-copy .lead');
   if (heroLeads[0]) {
-    heroLeads[0].textContent = 'A Vittore atua ao lado de oficinas, concessionárias, revendas, rent-a-car e seguradoras para absorver amassados, granizo e picos de volume, aliviar a fila e manter o padrão de entrega sem inflar a estrutura fixa.';
+    heroLeads[0].textContent = 'Especialistas em PDR atuam na sua estrutura para resolver granizo e amassados, acelerar prazos e manter o padrão de qualidade.';
   }
   if (heroLeads[1]) {
     heroLeads[1].remove();
