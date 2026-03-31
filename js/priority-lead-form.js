@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.querySelector("#priority-form-status");
   const openTriggers = document.querySelectorAll("[data-open-contact-modal]");
   const closeTriggers = document.querySelectorAll("[data-close-contact-modal]");
+  const defaultFormName = "SpiegaL'essenziale";
+  const defaultUtm = {
+    utm_source: "site",
+    utm_medium: "modal",
+    utm_campaign: "spiega-lessenziale"
+  };
 
   if (!modal || !form) return;
 
@@ -49,11 +55,47 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const messages = messagesByLang[pageLang] || messagesByLang.pt;
+  const trimValue = (value) => typeof value === "string" ? value.trim() : "";
+  const queryParams = new URLSearchParams(window.location.search);
 
   const setStatus = (message, tone = "") => {
     if (!status) return;
     status.textContent = message;
     status.dataset.tone = tone;
+  };
+
+  const buildPayload = (data) => {
+    const pick = (...keys) => {
+      for (const key of keys) {
+        const value = trimValue(data[key]);
+        if (value) return value;
+      }
+      return "";
+    };
+
+    const payload = {
+      formName: trimValue(form.dataset.formName) || defaultFormName,
+      name: pick("responsavel", "name", "nome"),
+      whatsapp: pick("whatsapp", "phone"),
+      email: pick("email"),
+      company: pick("empresa", "company", "azienda"),
+      vehicleCount: pick("quantidade_veiculos", "vehicleCount", "numeroVeicoli"),
+      cityProvince: pick("localidade", "cityProvince", "cittaProvincia"),
+      message: pick("mensagem", "message"),
+      pageUrl: window.location.href,
+      utm_source: trimValue(queryParams.get("utm_source")) || defaultUtm.utm_source,
+      utm_medium: trimValue(queryParams.get("utm_medium")) || defaultUtm.utm_medium,
+      utm_campaign: trimValue(queryParams.get("utm_campaign")) || defaultUtm.utm_campaign
+    };
+
+    const hp = pick("hp");
+    if (hp) {
+      payload.hp = hp;
+    }
+
+    return Object.fromEntries(
+      Object.entries(payload).filter(([, value]) => value !== "")
+    );
   };
 
   const openModal = () => {
@@ -114,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = Object.fromEntries(new FormData(form).entries());
     const endpoint = form.dataset.endpoint?.trim();
     const openUrl = form.dataset.openUrl?.trim();
+    const payload = buildPayload(data);
 
     setStatus(messages.sending, "loading");
 
@@ -122,9 +165,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(endpoint, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify(payload)
         });
 
         if (!response.ok) {
@@ -141,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       localStorage.setItem("vittorePriorityLeadDraft", JSON.stringify({
-        ...data,
+        ...payload,
         createdAt: new Date().toISOString()
       }));
     } catch (_) {
