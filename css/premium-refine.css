@@ -2959,21 +2959,15 @@ body {
   }
 
   .hero-video-caption {
-    left: 16px;
-    right: auto;
-    bottom: 112px;
-    max-width: 16ch;
-    font-size: 0.82rem;
-    line-height: 1.42;
-    text-align: left;
+    display: none;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 0;
     margin-top: auto;
-    padding-top: 54px;
+    padding-top: 36px;
     margin-bottom: 0;
   }
 
@@ -2985,22 +2979,7 @@ body {
   }
 
   .hero-link {
-    order: 1;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding-left: 2px;
-    font-size: 0.94rem;
-    line-height: 1.2;
-    color: rgba(239, 243, 249, 0.84);
-  }
-
-  .hero-link::after {
-    content: "";
-    display: inline-block;
-    width: 34px;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(217, 179, 106, 0.6), rgba(217, 179, 106, 0));
+    display: none;
   }
 
   .trust-strip {
