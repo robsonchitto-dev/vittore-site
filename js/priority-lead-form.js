@@ -73,10 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return "";
     };
 
-    const name = pick("responsavel", "name", "nome");
+    const contactName = pick("responsavel", "contactName", "fullName", "name", "nome");
     const whatsapp = pick("whatsapp", "phone");
     const email = pick("email");
     const company = pick("empresa", "company", "azienda");
+    const leadName = company || contactName;
     const vehicleCount = pick("quantidade_veiculos", "vehicleCount", "numeroVeicoli");
     const cityProvince = pick("localidade", "cityProvince", "cittaProvincia");
     const rawMessage = pick("mensagem", "message");
@@ -94,15 +95,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const payload = {
       formName: trimValue(form.dataset.formName) || defaultFormName,
-      name,
-      nome: name,
-      responsavel: name,
+      name: leadName,
+      nome: leadName,
+      responsavel: contactName,
+      fullName: contactName,
+      contactName,
       whatsapp,
       phone: whatsapp,
       email,
       company,
       empresa: company,
       azienda: company,
+      companyName: company,
       vehicleCount,
       quantidade_veiculos: vehicleCount,
       numeroVeicoli: vehicleCount,
