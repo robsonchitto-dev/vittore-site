@@ -73,15 +73,29 @@ document.addEventListener("DOMContentLoaded", () => {
       return "";
     };
 
+    const name = pick("responsavel", "name", "nome");
+    const whatsapp = pick("whatsapp", "phone");
+    const email = pick("email");
+    const company = pick("empresa", "company", "azienda");
+    const vehicleCount = pick("quantidade_veiculos", "vehicleCount", "numeroVeicoli");
+    const cityProvince = pick("localidade", "cityProvince", "cittaProvincia");
+    const message = pick("mensagem", "message");
+
     const payload = {
       formName: trimValue(form.dataset.formName) || defaultFormName,
-      name: pick("responsavel", "name", "nome"),
-      whatsapp: pick("whatsapp", "phone"),
-      email: pick("email"),
-      company: pick("empresa", "company", "azienda"),
-      vehicleCount: pick("quantidade_veiculos", "vehicleCount", "numeroVeicoli"),
-      cityProvince: pick("localidade", "cityProvince", "cittaProvincia"),
-      message: pick("mensagem", "message"),
+      name,
+      nome: name,
+      whatsapp,
+      phone: whatsapp,
+      email,
+      company,
+      azienda: company,
+      vehicleCount,
+      numeroVeicoli: vehicleCount,
+      cityProvince,
+      cittaProvincia: cityProvince,
+      message,
+      mensagem: message,
       pageUrl: window.location.href,
       utm_source: trimValue(queryParams.get("utm_source")) || defaultUtm.utm_source,
       utm_medium: trimValue(queryParams.get("utm_medium")) || defaultUtm.utm_medium,
