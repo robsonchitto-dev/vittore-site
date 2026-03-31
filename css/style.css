@@ -1880,6 +1880,10 @@ img {
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
+.utility-toggle-text {
+  display: none;
+}
+
 .utility-toggle:hover,
 .utility-toggle:focus-visible {
   background: rgba(11, 17, 29, 0.98);
