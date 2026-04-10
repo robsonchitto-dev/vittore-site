@@ -10,8 +10,8 @@
   const textReplacements = new Map([
     ['APOIO TÉCNICO EM PDR PARA GRANIZO E MOSSAS', 'EQUIPA ESPECIALIZADA EM PDR'],
     ['Soluções concretas, mesmo onde os outros não chegam.', 'Mais capacidade sem aumentar a estrutura.'],
-    ['Especialistas em PDR atuam na sua estrutura para tratar danos de granizo, mossas e picos de volume, acelerar prazos e manter o padrão de qualidade.', 'Apoiamos empresas na reparação de viaturas, na preparação de usados e na resposta a picos de volume, reduzindo o tempo de reparação e evitando pintura sempre que o dano o permite, sempre com padrão e controlo.'],
-    ['Especialistas em PDR atuam diretamente na sua estrutura para resolver danos de granizo e mossas, reduzir o tempo de reparação e manter elevados padrões de qualidade.', 'Apoiamos empresas na reparação de viaturas, na preparação de usados e na resposta a picos de volume, reduzindo o tempo de reparação e evitando pintura sempre que o dano o permite, sempre com padrão e controlo.'],
+    ['Especialistas em PDR atuam na sua estrutura para tratar danos de granizo, mossas e picos de volume, acelerar prazos e manter o padrão de qualidade.', 'Operamos em PDR há mais de 18 anos, apoiando empresas na reparação de viaturas, na preparação de usados e na resposta a picos de volume, reduzindo o tempo de reparação e evitando pintura sempre que o dano o permite, sempre com padrão e controlo.'],
+    ['Especialistas em PDR atuam diretamente na sua estrutura para resolver danos de granizo e mossas, reduzir o tempo de reparação e manter elevados padrões de qualidade.', 'Operamos em PDR há mais de 18 anos, apoiando empresas na reparação de viaturas, na preparação de usados e na resposta a picos de volume, reduzindo o tempo de reparação e evitando pintura sempre que o dano o permite, sempre com padrão e controlo.'],
     ['Quando a estrutura começa a perder ritmo.', 'Quando o volume aumenta e a estrutura deixa de acompanhar.'],
     ['Volume acumulado', 'Viaturas acumuladas'],
     ['Atraso nas entregas', 'Prazos em risco'],
@@ -168,7 +168,7 @@
 
     setText('.hero .eyebrow', 'EQUIPA ESPECIALIZADA EM PDR');
     setText('.hero h1', 'Mais capacidade sem aumentar a estrutura.');
-    setText('.hero .lead', 'Apoiamos empresas na reparação de viaturas, na preparação de usados e na resposta a picos de volume, reduzindo o tempo de reparação e evitando pintura sempre que o dano o permite, sempre com padrão e controlo.');
+    setText('.hero .lead', 'Operamos em PDR há mais de 18 anos, apoiando empresas na reparação de viaturas, na preparação de usados e na resposta a picos de volume, reduzindo o tempo de reparação e evitando pintura sempre que o dano o permite, sempre com padrão e controlo.');
     setText('.hero-media-caption', 'Equipa pronta para integrar-se na sua operação e recuperar fluidez.');
 
     document.querySelectorAll('[data-open-contact-modal]').forEach((button) => {
