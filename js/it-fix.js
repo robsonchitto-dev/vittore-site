@@ -178,25 +178,18 @@
     replaceAttributes();
   };
 
-  document.addEventListener('DOMContentLoaded', applyItalianFixes);
-  window.addEventListener('load', applyItalianFixes);
-
-  const observer = new MutationObserver(() => {
+  const scheduleItalianFixes = () => {
     applyItalianFixes();
-  });
+    window.setTimeout(applyItalianFixes, 200);
+    window.setTimeout(applyItalianFixes, 800);
+    window.setTimeout(applyItalianFixes, 1600);
+  };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    applyItalianFixes();
-    if (document.body) {
-      observer.observe(document.body, {
-        subtree: true,
-        childList: true,
-        characterData: true,
-        attributes: true,
-        attributeFilter: ['aria-label', 'title', 'placeholder']
-      });
-    }
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleItalianFixes, { once: true });
+  } else {
+    scheduleItalianFixes();
+  }
 
-  setInterval(applyItalianFixes, 1500);
+  window.addEventListener('load', scheduleItalianFixes, { once: true });
 })();

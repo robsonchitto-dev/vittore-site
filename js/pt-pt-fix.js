@@ -246,25 +246,18 @@
     replaceAttributes();
   };
 
-  document.addEventListener('DOMContentLoaded', applyPortugalFixes);
-  window.addEventListener('load', applyPortugalFixes);
-
-  const observer = new MutationObserver(() => {
+  const schedulePortugalFixes = () => {
     applyPortugalFixes();
-  });
+    window.setTimeout(applyPortugalFixes, 200);
+    window.setTimeout(applyPortugalFixes, 800);
+    window.setTimeout(applyPortugalFixes, 1600);
+  };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    applyPortugalFixes();
-    if (document.body) {
-      observer.observe(document.body, {
-        subtree: true,
-        childList: true,
-        characterData: true,
-        attributes: true,
-        attributeFilter: ['aria-label', 'title', 'placeholder']
-      });
-    }
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', schedulePortugalFixes, { once: true });
+  } else {
+    schedulePortugalFixes();
+  }
 
-  setInterval(applyPortugalFixes, 1500);
+  window.addEventListener('load', schedulePortugalFixes, { once: true });
 })();

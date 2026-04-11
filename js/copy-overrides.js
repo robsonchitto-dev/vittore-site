@@ -1411,8 +1411,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  applyLanguageBySelectors();
-  setInterval(applyLanguageBySelectors, 600);
+  const scheduleLanguageBySelectors = () => {
+    applyLanguageBySelectors();
+    setTimeout(applyLanguageBySelectors, 200);
+    setTimeout(applyLanguageBySelectors, 800);
+    setTimeout(applyLanguageBySelectors, 1600);
+  };
+
+  scheduleLanguageBySelectors();
 
   const captionBySource = currentLang === 'it'
     ? [
@@ -1497,8 +1503,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  syncHeroCaption();
-  setInterval(syncHeroCaption, 300);
+  const scheduleHeroCaptionSync = () => {
+    syncHeroCaption();
+    setTimeout(syncHeroCaption, 200);
+    setTimeout(syncHeroCaption, 800);
+    setTimeout(syncHeroCaption, 1600);
+  };
+
+  scheduleHeroCaptionSync();
+
+  const heroMediaRoot = document.querySelector('.hero-media-panel, .hero-media');
+  if (heroMediaRoot) {
+    const heroCaptionObserver = new MutationObserver(() => {
+      syncHeroCaption();
+    });
+
+    heroCaptionObserver.observe(heroMediaRoot, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ['src', 'class', 'style']
+    });
+  }
 
   const governanceSection = document.querySelector('#governanca, #governanca-section, .governance-section');
   const governanceValues = governanceSection?.querySelector('.governance-values');
