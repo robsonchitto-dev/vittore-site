@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const assetVersion = '20260411-2';
   const existing = document.querySelector('.language-switches');
   if (existing) existing.remove();
 
@@ -37,8 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   links.forEach((item) => {
     const link = document.createElement('a');
+    const targetUrl = new URL(item.href, window.location.href);
+    targetUrl.searchParams.set('v', assetVersion);
     link.className = `language-switch${item.active ? ' is-active' : ''}`;
-    link.href = item.href;
+    link.href = `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`;
     link.innerHTML = `<span class="language-switch-flag fi ${item.flag}" aria-hidden="true"></span><span class="language-switch-label">${item.label}</span>`;
     link.setAttribute('aria-label', item.label);
     wrapper.appendChild(link);
