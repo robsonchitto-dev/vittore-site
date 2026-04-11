@@ -12,6 +12,11 @@
     return "pt";
   }
 
+  const currentLang = detectLang();
+  if (currentLang === "it" || currentLang === "pt-pt") {
+    return;
+  }
+
   const replacements = {
     it: [
       ["Specialisti in PDR operano nella tua struttura per risolvere danni da grandine e ammaccature, accelerare i tempi e mantenere lo standard qualitativo.", "Specialisti PDR operano direttamente presso la vostra struttura per gestire danni da grandine e ammaccature, ridurre i tempi di lavorazione e mantenere elevati standard qualitativi."],
@@ -193,10 +198,9 @@
   }
 
   function run() {
-    const lang = detectLang();
-    applyTextReplacements(lang);
-    polishComparisonCard(lang);
-    polishBrandsBlock(lang);
+    applyTextReplacements(currentLang);
+    polishComparisonCard(currentLang);
+    polishBrandsBlock(currentLang);
   }
 
   if (document.readyState === "loading") {
