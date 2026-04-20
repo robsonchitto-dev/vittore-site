@@ -1245,8 +1245,151 @@ img {
   line-height: 1.35;
 }
 
+.governance-list li.is-interactive {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.governance-role-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: color 220ms ease, border-color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+
+.governance-role-button:hover,
+.governance-role-button:focus-visible,
+.governance-role-button.is-active {
+  color: var(--text);
+  border-color: rgba(201, 161, 72, 0.24);
+  background: rgba(201, 161, 72, 0.1);
+  transform: translateY(-1px);
+}
+
+.governance-role-button:focus-visible {
+  outline: 2px solid rgba(201, 161, 72, 0.38);
+  outline-offset: 2px;
+}
+
 .governance-list li::before {
   content: none;
+}
+
+.governance-people-panel {
+  margin-top: 22px;
+  padding: 24px 24px 22px;
+  border: 1px solid rgba(201, 161, 72, 0.16);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(201, 161, 72, 0.08), rgba(10, 15, 25, 0.92) 32%),
+    rgba(10, 15, 25, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.governance-people-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.governance-people-kicker {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.governance-people-head h3 {
+  margin: 0;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.governance-people-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.governance-people-selected strong {
+  color: var(--text);
+}
+
+.governance-people-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+
+.governance-people-close:hover,
+.governance-people-close:focus-visible {
+  border-color: rgba(201, 161, 72, 0.24);
+  background: rgba(201, 161, 72, 0.12);
+  transform: translateY(-1px);
+}
+
+.governance-people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.governance-person-card {
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.governance-person-name {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.governance-person-role {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.governance-person-bio {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .criteria-card {

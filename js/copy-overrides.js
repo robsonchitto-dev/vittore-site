@@ -910,11 +910,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (governanceColumns[0]) {
         governanceColumns[0].querySelector('h3').textContent = 'Direzione commerciale';
         const li = governanceColumns[0].querySelectorAll('li');
-        if (li[0]) li[0].textContent = 'Marketing';
-        if (li[1]) li[1].textContent = 'Vendite';
-        if (li[2]) li[2].textContent = 'Consulenza tecnica';
-        if (li[3]) li[3].textContent = 'Prospezione e conversione';
-        if (li[4]) li[4].textContent = 'Post-vendita';
+        if (li[0]) li[0].textContent = 'Vendite';
+        if (li[1]) li[1].textContent = 'Consulenza tecnica';
+        if (li[2]) li[2].textContent = 'Prospezione e conversione';
+        if (li[3]) li[3].textContent = 'Post-vendita';
       }
       if (governanceColumns[1]) {
         governanceColumns[1].querySelector('h3').textContent = 'Direzione tecnica';
@@ -928,11 +927,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (governanceColumns[2]) {
         governanceColumns[2].querySelector('h3').textContent = 'Servizi condivisi';
         const li = governanceColumns[2].querySelectorAll('li');
-        if (li[0]) li[0].textContent = 'Persone e cultura';
-        if (li[1]) li[1].textContent = 'Finanza';
-        if (li[2]) li[2].textContent = 'Amministrazione';
-        if (li[3]) li[3].textContent = 'Regolarizzazione e integrazione';
-        if (li[4]) li[4].textContent = 'Servizi al tecnico';
+        if (li[0]) li[0].textContent = 'Marketing';
+        if (li[1]) li[1].textContent = 'Persone e cultura';
+        if (li[2]) li[2].textContent = 'Finanza';
+        if (li[3]) li[3].textContent = 'Amministrazione';
+        if (li[4]) li[4].textContent = 'Legalizzazione e integrazione';
+        if (li[5]) li[5].textContent = 'Servizi al tecnico';
       }
       setTextIfFound('.footer-brandline-copy', 'Meno vernice. Meno tempo senza auto. Più produttività.');
       const utilityItems = document.querySelectorAll('.utility-item');
@@ -1341,11 +1341,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (governanceColumns[0]) {
         governanceColumns[0].querySelector('h3').textContent = 'Commercial direction';
         const li = governanceColumns[0].querySelectorAll('li');
-        if (li[0]) li[0].textContent = 'Marketing';
-        if (li[1]) li[1].textContent = 'Sales';
-        if (li[2]) li[2].textContent = 'Technical advisory';
-        if (li[3]) li[3].textContent = 'Prospecting and conversion';
-        if (li[4]) li[4].textContent = 'After-sales';
+        if (li[0]) li[0].textContent = 'Sales';
+        if (li[1]) li[1].textContent = 'Technical advisory';
+        if (li[2]) li[2].textContent = 'Prospecting and conversion';
+        if (li[3]) li[3].textContent = 'After-sales';
       }
       if (governanceColumns[1]) {
         governanceColumns[1].querySelector('h3').textContent = 'Technical direction';
@@ -1359,11 +1358,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (governanceColumns[2]) {
         governanceColumns[2].querySelector('h3').textContent = 'Shared services';
         const li = governanceColumns[2].querySelectorAll('li');
-        if (li[0]) li[0].textContent = 'People and culture';
-        if (li[1]) li[1].textContent = 'Finance';
-        if (li[2]) li[2].textContent = 'Administration';
-        if (li[3]) li[3].textContent = 'Legalization and integration';
-        if (li[4]) li[4].textContent = 'Technician services';
+        if (li[0]) li[0].textContent = 'Marketing';
+        if (li[1]) li[1].textContent = 'People and culture';
+        if (li[2]) li[2].textContent = 'Finance';
+        if (li[3]) li[3].textContent = 'Administration';
+        if (li[4]) li[4].textContent = 'Legalization and integration';
+        if (li[5]) li[5].textContent = 'Technician services';
       }
       setTextIfFound('.footer-brandline-copy', 'Less paint. Less downtime. More productivity.');
       const utilityItems = document.querySelectorAll('.utility-item');
