@@ -15,31 +15,31 @@
   const uiByLang = {
     pt: {
       kicker: 'Pessoas',
-      title: 'Responsáveis por esta função',
-      selectedLabel: 'Função selecionada',
+      title: 'Pessoas responsáveis',
+      selectedLabel: 'Cargo ou área',
       closeLabel: 'Fechar',
-      triggerTitle: 'Ver responsável por esta função'
+      triggerTitle: 'Ver pessoas responsáveis'
     },
     'pt-pt': {
       kicker: 'Pessoas',
-      title: 'Responsáveis por esta função',
-      selectedLabel: 'Função selecionada',
+      title: 'Pessoas responsáveis',
+      selectedLabel: 'Cargo ou área',
       closeLabel: 'Fechar',
-      triggerTitle: 'Ver responsável por esta função'
+      triggerTitle: 'Ver pessoas responsáveis'
     },
     it: {
       kicker: 'Persone',
-      title: 'Responsabili di questa funzione',
-      selectedLabel: 'Funzione selezionata',
+      title: 'Persone responsabili',
+      selectedLabel: 'Ruolo o area',
       closeLabel: 'Chiudi',
-      triggerTitle: 'Vedi il responsabile di questa funzione'
+      triggerTitle: 'Vedi le persone responsabili'
     },
     en: {
       kicker: 'People',
-      title: 'People responsible for this function',
-      selectedLabel: 'Selected function',
+      title: 'Responsible people',
+      selectedLabel: 'Role or area',
       closeLabel: 'Close',
-      triggerTitle: 'View the person responsible for this function'
+      triggerTitle: 'View responsible people'
     }
   };
 
@@ -114,61 +114,24 @@
     }
   };
 
-  const roleOwners = new Map([
-    ['vendas', ['robson']],
-    ['sales', ['robson']],
-    ['vendite', ['robson']],
-    ['assessoria tecnica', ['robson']],
-    ['assessoria técnica', ['robson']],
-    ['technical advisory', ['robson']],
-    ['consulenza tecnica', ['robson']],
-    ['prospeccao e conversao', ['robson']],
-    ['prospeção e conversão', ['robson']],
-    ['prospecting and conversion', ['robson']],
-    ['prospezione e conversione', ['robson']],
-    ['pos-venda', ['robson']],
-    ['pós-venda', ['robson']],
-    ['after-sales', ['robson']],
-    ['post-vendita', ['robson']],
-    ['controle de qualidade', ['marcelo']],
-    ['controlo de qualidade', ['marcelo']],
-    ['quality control', ['marcelo']],
-    ['controllo qualita', ['marcelo']],
-    ['laboratorio tecnico', ['marcelo']],
-    ['laboratório técnico', ['marcelo']],
-    ['technical lab', ['marcelo']],
-    ['laboratorio tecnico', ['marcelo']],
-    ['formacao e treinamento', ['marcelo']],
-    ['formação e treino', ['marcelo']],
-    ['training and development', ['marcelo']],
-    ['formazione e training', ['marcelo']],
-    ['homologacao', ['marcelo']],
-    ['homologação', ['marcelo']],
-    ['certification', ['marcelo']],
-    ['omologazione', ['marcelo']],
-    ['unidades moveis e projetos personalizados', ['marcelo']],
-    ['unidades móveis e projetos personalizados', ['marcelo']],
-    ['mobile units and custom projects', ['marcelo']],
-    ['unita mobili e progetti personalizzati', ['marcelo']],
-    ['marketing', ['lais']],
-    ['pessoas e cultura', ['lais']],
-    ['people and culture', ['lais']],
-    ['persone e cultura', ['lais']],
-    ['financeiro', ['lais']],
-    ['finance', ['lais']],
-    ['finanza', ['lais']],
-    ['administrativo', ['lais']],
-    ['administration', ['lais']],
-    ['amministrazione', ['lais']],
-    ['legalizacao e integracao', ['lais']],
-    ['legalização e integração', ['lais']],
-    ['legalization and integration', ['lais']],
-    ['legalizzazione e integrazione', ['lais']],
-    ['regolarizzazione e integrazione', ['lais']],
-    ['servicos ao tecnico', ['lais']],
-    ['serviços ao técnico', ['lais']],
-    ['technician services', ['lais']],
-    ['servizi al tecnico', ['lais']]
+  const triggerOwners = new Map([
+    ['ceo', ['marcelo']],
+    ['cfo', ['robson']],
+    ['compliance e legal', ['marcelo', 'robson']],
+    ['compliance e legale', ['marcelo', 'robson']],
+    ['compliance and legal', ['marcelo', 'robson']],
+    ['direcao comercial', ['robson']],
+    ['direção comercial', ['robson']],
+    ['direzione commerciale', ['robson']],
+    ['commercial direction', ['robson']],
+    ['direcao tecnica', ['marcelo']],
+    ['direção técnica', ['marcelo']],
+    ['direzione tecnica', ['marcelo']],
+    ['technical direction', ['marcelo']],
+    ['servicos compartilhados', ['lais']],
+    ['serviços partilhados', ['lais']],
+    ['servizi condivisi', ['lais']],
+    ['shared services', ['lais']]
   ]);
 
   const ui = uiByLang[pageLang] || uiByLang.pt;
@@ -223,10 +186,10 @@
   };
 
   const setActiveState = (trigger) => {
-    governanceSection.querySelectorAll('.governance-role-button').forEach((button) => {
-      const isActive = button === trigger;
-      button.classList.toggle('is-active', isActive);
-      button.setAttribute('aria-expanded', String(isActive));
+    governanceSection.querySelectorAll('.governance-trigger').forEach((element) => {
+      const isActive = element === trigger;
+      element.classList.toggle('is-active', isActive);
+      element.setAttribute('aria-expanded', String(isActive));
     });
   };
 
@@ -244,7 +207,7 @@
     }
   };
 
-  const renderPanel = (roleLabel, ownerKeys, trigger) => {
+  const renderPanel = (label, ownerKeys, trigger) => {
     const panel = createPanel();
     if (!panel) return;
 
@@ -252,7 +215,7 @@
     const grid = panel.querySelector('.governance-people-grid');
     if (!selected || !grid) return;
 
-    selected.textContent = roleLabel;
+    selected.textContent = label;
     grid.innerHTML = '';
 
     ownerKeys.forEach((ownerKey) => {
@@ -271,7 +234,7 @@
 
     panel.hidden = false;
     panel.setAttribute('aria-hidden', 'false');
-    activeRoleKey = normalize(roleLabel);
+    activeRoleKey = normalize(label);
     activeTrigger = trigger;
     setActiveState(trigger);
 
@@ -280,51 +243,72 @@
     }
   };
 
-  const wireRoleButtons = () => {
+  const handleTrigger = (trigger) => {
+    const label = trigger.dataset.roleLabel || '';
+    const roleKey = trigger.dataset.roleKey || '';
+    const ownerKeys = triggerOwners.get(roleKey);
+    if (!label || !ownerKeys) return;
+
+    const panel = createPanel();
+    const sameRole = panel && activeRoleKey === roleKey && !panel.hidden;
+    if (sameRole) {
+      closePanel();
+      return;
+    }
+
+    renderPanel(label, ownerKeys, trigger);
+  };
+
+  const bindTrigger = (element, label, variant) => {
+    const roleKey = normalize(label);
+    if (!triggerOwners.has(roleKey)) return;
+
+    element.classList.add('governance-trigger', `governance-trigger-${variant}`);
+    element.dataset.roleKey = roleKey;
+    element.dataset.roleLabel = label;
+    element.setAttribute('title', ui.triggerTitle);
+    element.setAttribute('role', 'button');
+    element.setAttribute('tabindex', '0');
+    element.setAttribute('aria-controls', panelId);
+    element.setAttribute('aria-expanded', 'false');
+
+    if (element.dataset.bound === 'true') return;
+
+    element.dataset.bound = 'true';
+    element.addEventListener('click', () => handleTrigger(element));
+    element.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      handleTrigger(element);
+    });
+  };
+
+  const wireTriggers = () => {
     governanceSection.querySelectorAll('.governance-list li').forEach((item) => {
-      const existingButton = item.querySelector('.governance-role-button');
-      const label = existingButton ? existingButton.textContent.trim() : item.textContent.trim();
-      const ownerKeys = roleOwners.get(normalize(label));
-
-      if (!ownerKeys) return;
-
-      let button = existingButton;
-      if (!button) {
-        item.classList.add('is-interactive');
-        item.textContent = '';
-        button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'governance-role-button';
-        item.appendChild(button);
+      const legacyButton = item.querySelector('.governance-role-button');
+      if (legacyButton) {
+        item.textContent = legacyButton.textContent.trim();
       }
+      item.classList.remove('is-interactive');
+    });
 
-      button.textContent = label;
-      button.setAttribute('title', ui.triggerTitle);
-      button.setAttribute('aria-controls', panelId);
-      button.setAttribute('aria-expanded', 'false');
-      button.dataset.roleKey = normalize(label);
+    governanceSection.querySelectorAll('.governance-top span').forEach((item) => {
+      const label = item.textContent.trim();
+      bindTrigger(item, label, 'top');
+    });
 
-      if (button.dataset.bound === 'true') return;
-
-      button.dataset.bound = 'true';
-      button.addEventListener('click', () => {
-        const panel = createPanel();
-        const sameRole = panel && activeRoleKey === button.dataset.roleKey && !panel.hidden;
-        if (sameRole) {
-          closePanel();
-          return;
-        }
-
-        renderPanel(label, ownerKeys, button);
-      });
+    governanceSection.querySelectorAll('.governance-column').forEach((column) => {
+      const heading = column.querySelector('h3');
+      if (!heading) return;
+      bindTrigger(column, heading.textContent.trim(), 'card');
     });
   };
 
   const scheduleWiring = () => {
-    wireRoleButtons();
-    window.setTimeout(wireRoleButtons, 200);
-    window.setTimeout(wireRoleButtons, 800);
-    window.setTimeout(wireRoleButtons, 1600);
+    wireTriggers();
+    window.setTimeout(wireTriggers, 200);
+    window.setTimeout(wireTriggers, 800);
+    window.setTimeout(wireTriggers, 1600);
   };
 
   document.addEventListener('keydown', (event) => {
