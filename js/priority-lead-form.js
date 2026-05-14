@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.querySelector("#priority-form-status");
   const openTriggers = document.querySelectorAll("[data-open-contact-modal]");
   const closeTriggers = document.querySelectorAll("[data-close-contact-modal]");
-  const defaultFormName = "SpiegaL'essenziale";
+  const defaultFormName = "ContactoVittore";
   const defaultUtm = {
     utm_source: "site",
     utm_medium: "modal",
-    utm_campaign: "spiega-lessenziale"
+    utm_campaign: "contacto-vittore"
   };
 
   if (!modal || !form) return;
@@ -32,11 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
       prepared: "Contato preparado para tratamento prioritario. O MGOLD foi aberto para continuidade."
     },
     "pt-pt": {
-      required: "Preencha os dados principais para podermos avancar.",
+      required: "Preencha os dados principais para podermos avançar.",
       sending: "A enviar o seu contacto...",
       success: "Recebemos o seu contacto e vamos dar seguimento com prioridade.",
-      fallbackError: "Nao foi possivel registar diretamente no MGOLD agora. Vamos abrir o portal para dar continuidade.",
-      prepared: "Contacto preparado para tratamento prioritario. O MGOLD foi aberto para continuidade."
+      fallbackError: "Não foi possível registar diretamente no MGOLD agora. Vamos abrir o portal para dar continuidade.",
+      prepared: "Contacto preparado para tratamento prioritário. O MGOLD foi aberto para continuidade."
     },
     en: {
       required: "Please fill in the main details so we can move forward.",

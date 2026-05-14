@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     "pt-pt": {
-      primary: "Falar com especialista",
-      secondary: "Perceber o PDR",
+      primary: "Fale com um especialista",
+      secondary: "O que é o PDR",
       captions: [
         "Precisão em cada detalhe.",
         "O seu carro reparado com os mais altos padrões de qualidade.",

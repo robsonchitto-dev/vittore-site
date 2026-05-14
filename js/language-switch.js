@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const assetVersion = '20260411-2';
+  const assetVersion = '20260511-1';
   const existing = document.querySelector('.language-switches');
   if (existing) existing.remove();
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname.toLowerCase();
   const pageLang = (document.documentElement.lang || '').toLowerCase();
 
-  let currentLang = 'it';
+  let currentLang = 'pt-pt';
   if (path.endsWith('/brasil.html') || path.endsWith('brasil.html')) {
     currentLang = 'pt';
   } else if (path.endsWith('/english.html') || path.endsWith('english.html')) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (path.endsWith('/portugal.html') || path.endsWith('portugal.html')) {
     currentLang = 'pt-pt';
   } else if (path === '/' || path.endsWith('/index.html') || path.endsWith('index.html')) {
-    currentLang = 'it';
+    currentLang = 'pt-pt';
   } else if (pageLang.startsWith('en') || langParam === 'en') {
     currentLang = 'en';
   } else if (pageLang === 'pt-pt' || langParam === 'pt-pt' || langParam === 'ptpt') {
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const links = [
-    { href: './', flag: 'fi-it', label: 'IT', active: currentLang === 'it' },
-    { href: 'portugal.html', flag: 'fi-pt', label: 'PT', active: currentLang === 'pt-pt' },
+    { href: 'italiano.html', flag: 'fi-it', label: 'IT', active: currentLang === 'it' },
+    { href: './', flag: 'fi-pt', label: 'PT', active: currentLang === 'pt-pt' },
     { href: 'english.html', flag: 'fi-gb', label: 'EN', active: currentLang === 'en' }
   ];
 
@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetUrl = new URL(item.href, window.location.href);
     targetUrl.searchParams.set('v', assetVersion);
     link.className = `language-switch${item.active ? ' is-active' : ''}`;
-    link.href = `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`;
+    link.href = window.location.protocol === 'file:'
+      ? `${item.href}${targetUrl.search}${targetUrl.hash}`
+      : `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`;
     link.innerHTML = `<span class="language-switch-flag fi ${item.flag}" aria-hidden="true"></span><span class="language-switch-label">${item.label}</span>`;
     link.setAttribute('aria-label', item.label);
     wrapper.appendChild(link);
